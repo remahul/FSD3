@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Button and Container</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: #3498db;
+            border-radius: 10px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        button.active {
+            background-color: #e74c3c;
+        }
+
+        .container.active {
+            background-color: #9b59b6;
+        }
+
+        .container.active p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <p id="text">This is some text inside the container.</p>
+        <button id="toggleButton" onclick="toggleState()">Change State</button>
+    </div>
+
+    <script>
+        let isActive = false;
+
+        function toggleState() {
+            const container = document.getElementById('container');
+            const text = document.getElementById('text');
+            const button = document.getElementById('toggleButton');
+
+            isActive = !isActive;
+
+            if (isActive) {
+                container.classList.add('active');
+                button.classList.add('active');
+                button.innerText = "Revert State";
+                text.innerText = "The state has changed!";
+            } else {
+                container.classList.remove('active');
+                button.classList.remove('active');
+                button.innerText = "Change State";
+                text.innerText = "This is some text inside the container.";
+            }
+        }
+    </script>
+</body>
+</html>
